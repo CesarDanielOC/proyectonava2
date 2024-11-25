@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Editar paciente: {{ paciente.nombre }}</h2>
+
+  <form method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input type="text" class="form-control" id="nombre" name="nombre" value="{{ paciente.nombre }}" required>
+    </div>
+    <div class="form-group">
+        <label for="edad">Edad:</label>
+        <input type="number" class="form-control" id="edad" name="edad" value="{{ paciente.edad }}" required>
+    </div>
+    <div class="form-group">
+        <label for="fecha_cita">Fecha de cita:</label>
+        <input type="date" class="form-control" id="fecha_cita" name="fecha_cita" value="{{ paciente.fecha_cita }}" required>
+    </div>
+    <div class="form-group">
+        <label for="hora_cita">Hora de cita:</label>
+        <input type="time" class="form-control" id="hora_cita" name="hora_cita" value="{{ paciente.hora_cita }}" required>
+    </div>
+    <div class="form-group">
+        <label for="motivo">Motivo:</label>
+        <textarea class="form-control" id="motivo" name="motivo" rows="3" required>{{ paciente.motivo }}</textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar cambios</button>
+</form>
+
+{% endblock %}

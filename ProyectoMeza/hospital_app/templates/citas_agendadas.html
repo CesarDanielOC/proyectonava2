@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center">Citas Agendadas</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID Paciente</th>
+                <th>Nombre</th>
+                <th>Edad</th>
+                <th>Fecha Cita</th>
+                <th>Hora Cita</th>
+                <th>Motivo</th>
+                <th>Acciones</th>
+            </tr>
+            <center><img class="w-50" src="{% static 'img/hospital.jpeg' %}" alt="Hospital Otikuro Otimato"></center>
+        </thead>
+        <tbody>
+            
+            {% for paciente in mispacientes %}
+                <tr>
+                    <td>{{ paciente.id_paciente }}</td>
+                    <td>{{ paciente.nombre }}</td>
+                    <td>{{ paciente.edad }}</td>
+                    <td>{{ paciente.fecha_cita }}</td>
+                    <td>{{ paciente.hora_cita }}</td>
+                    <td>{{ paciente.motivo }}</td>
+                    <td>
+                        <a href="{% url 'seleccionarPaciente' paciente.id_paciente %}" class="btn btn-warning">Modificar</a>
+                        <a href="{% url 'borrarPaciente' paciente.id_paciente %}" class="btn btn-danger" onclick="return confirm('¿Estás seguro de que deseas eliminar esta cita?');">Eliminar</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock content%}

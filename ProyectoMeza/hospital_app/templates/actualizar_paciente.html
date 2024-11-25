@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center">Modificar Cita</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="txtnombre">Nombre:</label>
+            <input type="text" name="txtnombre" class="form-control" value="{{ paciente.nombre }}">
+        </div>
+        <div class="form-group">
+            <label for="numedad">Edad:</label>
+            <input type="number" name="numedad" class="form-control" value="{{ paciente.edad }}">
+        </div>
+        <div class="form-group">
+            <label for="txtfecha_cita">Fecha de Cita:</label>
+            <input type="date" name="txtfecha_cita" class="form-control" value="{{ paciente.fecha_cita|date:'Y-m-d' }}">
+        </div>
+        <div class="form-group">
+            <label for="txthora_cita">Hora de la cita:</label>
+            <input type="time" name="txthora_cita" class="form-control" value="{{ paciente.hora_cita|time:'H:i' }}">
+        </div>
+        <div class="form-group">
+            <label for="txtmotivo">Motivo:</label>
+            <textarea name="txtmotivo" class="form-control">{{ paciente.motivo }}</textarea>
+        </div>
+        <center><button type="submit" class="btn btn-success">Actualizar Cita</button></center>
+    </form>
+</div>
+{% endblock %}
